@@ -1,6 +1,6 @@
 import streamlit as st
 st.set_page_config(page_title="Chancy AI", page_icon="")
-st.("Chancy AI")
+st.title("Chancy AI")
 st.write("Je suis Chancy, une IA en développement")
 st.write("Créée par Chance Bahati")
 question = st.text_input("pose ta question")
