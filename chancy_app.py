@@ -12,7 +12,7 @@ if question:
     # si on demmande le nom
     elif "nom du créateur" in q:
         st.success("Chancy : Mon créateur s'appelle Chance Bahati")
-    elif:
+    else:
         st.success("Chancy : Je suis encore en développement mais j'apprends chaque jour")
 st.write("---")
 st.caption("Chancy AI | En développement par Chance Bahati")
