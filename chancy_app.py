@@ -19,22 +19,22 @@ st.write(f"Mon créateur est {NOM_CREATEUR}")
 # ---------------------------
 if "messages" not in st.session_state:
     st.session_state.messages = []
-for mgs in st.session_state.messages:
+    for mgs in st.session_state.messages:
     st.write(mgs)
-question = st.text_input("Écris ton message")
-# ---------------------------
-# BLANGUES
-# ---------------------------
-blangues = ["Pourquoi les développeurs aiment Python ? Parce que c'est simple !",
+    question = st.text_input("Écris ton message")
+    # ---------------------------
+    # BLANGUES
+    # ---------------------------
+    blangues = ["Pourquoi les développeurs aiment Python ? Parce que c'est simple !",
             "J'ai essayé de dormir... mais j'avais un bug", "Je suis une IA, je ne dors jamais !"]
-# ---------------------------
-# LOGIQUE
-# ---------------------------
+    # ---------------------------
+    # LOGIQUE
+    # ---------------------------
 if question:
     q = question.lower()
     st.session_state.messages.append("Toi : " + question)
     # contenu interdit
-    if "sexe" in q or "porno" in q or "adulte" in q:
+if "sexe" in q or "porno" in q or "adulte" in q:
     reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande. Cela fait partie des consignes données par mon créateur, Chance Bahati, m'a programmée pour respectueuse, responsable, utile à tous les utiltsateurs et suivre des règles de sécurité."
     # créateur
     elif "créateur" in q or "qui t'a créé" in q or "qui t'a programméé" in q:
@@ -55,9 +55,9 @@ if question:
     elif "blague" in q:
         renpose = random.choice(blagues)
     # DEFAULT  
-    elif:
+    else:
         reponse = "Chancy : Je suis encore en développement"
     st.session_state.messages.append(reponse)
     st.rerun()
-st.write("---")
-st.caption("Chancy AI | Projet de Chance Bahati")
+    st.write("---")
+    st.caption("Chancy AI | Projet de Chance Bahati")
