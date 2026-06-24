@@ -37,25 +37,25 @@ if question:
 if "sexe" in q or "porno" in q or "adulte" in q:
     reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande. Cela fait partie des consignes données par mon créateur, Chance Bahati, m'a programmée pour respectueuse, responsable, utile à tous les utiltsateurs et suivre des règles de sécurité."
     # créateur
-    elif "créateur" in q or "qui t'a créé" in q or "qui t'a programméé" in q:
+elif "créateur" in q or "qui t'a créé" in q or "qui t'a programméé" in q:
         reponse = f"Chancy : Mon créateur est {NOM_CREATEUR}"
     # AGE CREATEUR
-    elif "àge du créateur" in q or "age du créateur" in q:
+elif "àge du créateur" in q or "age du créateur" in q:
         reponse = f"Chancy : Mon créateur a {CREATEUR_AGE} ans"
     # PAYS CREATEUR
-    elif "pays du créateur" in q:
+elif "pays du créateur" in q:
         reponse = f"Chancy : Mon créateur vient du {PAYS_CREATEUR}"
     # REGION 
-    elif "province" in q or "Sud Kivu" in q:
+elif "province" in q or "Sud Kivu" in q:
         reponse = f"Chancy : Mon créateur vient du {REGION_CREATEUR}"
     # SALUT
-    elif "bonjour" in q or "salut" in q or "coucou" in q or "hey" in q or "ça va" in q:
+elif "bonjour" in q or "salut" in q or "coucou" in q or "hey" in q or "ça va" in q:
         reponse = "Chancy : Bonjour"
     # BLAGUE
-    elif "blague" in q:
+elif "blague" in q:
         renpose = random.choice(blagues)
     # DEFAULT  
-    else:
+else:
         reponse = "Chancy : Je suis encore en développement"
     st.session_state.messages.append(reponse)
     st.rerun()
