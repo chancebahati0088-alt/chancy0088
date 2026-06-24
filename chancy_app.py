@@ -19,7 +19,7 @@ st.write(f"Mon créateur est {NOM_CREATEUR}")
 # ---------------------------
 if "messages" not in st.session_state:
     st.session_state.messages = []
-    for mgs in st.session_state.messages:
+for mgs in st.session_state.messages:
     st.write(mgs)
     question = st.text_input("Écris ton message")
     # ---------------------------
