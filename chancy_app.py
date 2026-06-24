@@ -35,7 +35,7 @@ if question:
     st.session_state.messages.append("Toi : " + question)
     # contenu interdit
     if "sexe" in q or "porno" in q or "adulte" in q:
-    reponse = "Chancy : Désolée, je ne peux aider avec cette demande. Cele fait partie des consignes données par mon créateur, Chance Bahati, m'a programmée pour respectueuse, responsable, utile à tous les utiltsateurs et suivre des règles de sécurité."
+    reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande. Cela fait partie des consignes données par mon créateur, Chance Bahati, m'a programmée pour respectueuse, responsable, utile à tous les utiltsateurs et suivre des règles de sécurité."
     # créateur
     elif "créateur" in q or "qui t'a créé" in q or "qui t'a programméé" in q:
         reponse = f"Chancy : Mon créateur est {NOM_CREATEUR}"
