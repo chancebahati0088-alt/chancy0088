@@ -32,7 +32,7 @@ for mgs in st.session_state.messages:
     # ---------------------------
 if question:
     q = question.lower()
-    st.session_state.messages.append("Toi : " + question)
+st.session_state.messages.append("Toi : " + question)
     # contenu interdit
 if "sexe" in q or "porno" in q or "adulte" in q:
     reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande. Cela fait partie des consignes données par mon créateur, Chance Bahati, m'a programmée pour respectueuse, responsable, utile à tous les utiltsateurs et suivre des règles de sécurité."
