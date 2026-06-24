@@ -57,7 +57,7 @@ elif "blague" in q:
     # DEFAULT  
 else:
         reponse = "Chancy : Je suis encore en développement"
-    st.session_state.messages.append(reponse)
-    st.rerun()
+ st.session_state.messages.append(reponse)
+ st.rerun()
     st.write("---")
     st.caption("Chancy AI | Projet de Chance Bahati")
