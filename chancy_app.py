@@ -56,7 +56,7 @@ elif "blague" in q:
         renpose = random.choice(blagues)
     # DEFAULT  
 else:
-        reponse = "Chancy : Je suis encore en développement"
+    reponse = "Chancy : Je suis encore en développement"
 st.session_state.messages.append(reponse)
 st.rerun()
 st.write("---")
