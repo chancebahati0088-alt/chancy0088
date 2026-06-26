@@ -1,0 +1,110 @@
+import streamlit as st
+import random
+
+st.set_page_config(page_title="Chancy GPT", page_icon="🤖", layout="centered")
+
+# ---------------------------
+# INFORMATIONS DU CREATEUR
+# ---------------------------
+NOM_CREATEUR = "Murhula Bahati Chance"
+AGE_CREATEUR = 17
+PAYS_CREATEUR = "République Démocratique du Congo"
+PROVINCE_CREATEUR = "Sud-Kivu"
+
+# ---------------------------
+# RÉPONSES PRÉDÉFINIES
+# ---------------------------
+blagues = [
+    "Pourquoi les développeurs aiment Python ? Parce que c'est simple !",
+    "J'ai essayé de dormir... mais j'avais un bug",
+    "Je suis une IA, je ne dors jamais !"
+]
+forbidden_words = ["sexe", "porno", "adulte"]
+
+# ---------------------------
+# ETAT DE SESSION
+# ---------------------------
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+if "input" not in st.session_state:
+    st.session_state.input = ""
+if "started" not in st.session_state:
+    st.session_state.started = False
+
+# ---------------------------
+# BARRE LATERALE
+# ---------------------------
+st.sidebar.title("Chancy GPT")
+if st.sidebar.button("Accueil"):
+    st.session_state.started = False
+    st.experimental_rerun()
+if st.sidebar.button("Réinitialiser l'historique"):
+    st.session_state.messages = []
+    st.experimental_rerun()
+
+# ---------------------------
+# ECRAN D'ACCUEIL
+# ---------------------------
+if not st.session_state.started:
+    st.markdown("# Bienvenue sur Chancy GPT 👋")
+    st.write("Je suis Chancy, une version style GPT de ton mini‑chatbot. Je peux répondre à des questions simples et raconter des blagues.")
+    st.write(f"Créateur : {NOM_CREATEUR} — {AGE_CREATEUR} ans — {PROVINCE_CREATEUR}, {PAYS_CREATEUR}")
+    st.write("---")
+    st.write("Essayez : \n- Qui t'a créé ?\n- Raconte une blague\n- D'où vient ton créateur ?")
+
+    col1, col2 = st.columns([1, 1])
+    with col1:
+        if st.button("Démarrer le chat"):
+            st.session_state.started = True
+            st.experimental_rerun()
+    with col2:
+        st.write("")
+        if st.button("Voir le code sur GitHub"):
+            st.write("Le code est disponible dans le dépôt GitHub du projet.")
+
+    st.stop()
+
+# ---------------------------
+# INTERFACE DE CHAT
+# ---------------------------
+st.title("Chancy GPT — Chat")
+st.write("Je suis Chancy — pose une question ou dis 'blague' pour que je raconte quelque chose.")
+st.write("---")
+
+# Affichage de l'historique
+for msg in st.session_state.messages:
+    if msg.startswith("Toi :"):
+        st.markdown(f"**{msg}**")
+    else:
+        st.markdown(f"_{msg}_")
+
+# Champ de saisie
+question = st.text_input("Écris ton message", value=st.session_state.input, key="input")
+
+# Logique de réponse
+if question:
+    q = question.lower().strip()
+    st.session_state.messages.append("Toi : " + question)
+
+    if any(word in q for word in forbidden_words):
+        reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande."
+    elif "créateur" in q or "qui t'a créé" in q or "qui t'a programmé" in q:
+        reponse = f"Chancy : Mon créateur est {NOM_CREATEUR}"
+    elif "age" in q or "âge" in q:
+        reponse = f"Chancy : Mon créateur a {AGE_CREATEUR} ans"
+    elif "pays" in q or "origine" in q or "d'ou vient" in q:
+        reponse = f"Chancy : Mon créateur vient de {PAYS_CREATEUR}"
+    elif "province" in q or "sud-kivu" in q or "sud kivu" in q:
+        reponse = f"Chancy : Mon créateur vient de la province {PROVINCE_CREATEUR}"
+    elif any(g in q for g in ["bonjour", "salut", "coucou", "hey", "ça va", "ca va"]):
+        reponse = "Chancy : Bonjour ! Comment puis‑je t'aider ?"
+    elif "blague" in q or "raconte" in q:
+        reponse = "Chancy : " + random.choice(blagues)
+    else:
+        reponse = "Chancy : Je suis encore en développement — je ne comprends pas parfaitement, mais j'apprends !"
+
+    st.session_state.messages.append(reponse)
+    st.session_state.input = ""
+    st.experimental_rerun()
+
+st.caption("Chancy GPT | Projet de Chance Bahati")
