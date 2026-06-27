@@ -104,5 +104,5 @@ if question:
         reponse = "Chancy : Je suis encore en développement — je ne comprends pas parfaitement, mais j'apprends !"
 
     st.session_state.messages.append(reponse)
-    # st.rerun()
+    st.rerun()
 st.caption("Chancy AI | Projet de Chance Bahati")
