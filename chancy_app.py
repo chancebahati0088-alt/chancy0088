@@ -37,7 +37,7 @@ if "started" not in st.session_state:
 st.sidebar.title("Chancy AI")
 if st.sidebar.button("Accueil"):
     st.session_state.started = False
-    st.experimental_rerun()
+    st.rerun()
 if st.sidebar.button("Réinitialiser l'historique"):
     st.session_state.messages = []
     st.experimental_rerun()
@@ -46,8 +46,8 @@ if st.sidebar.button("Réinitialiser l'historique"):
 # ECRAN D'ACCUEIL
 # ---------------------------
 if not st.session_state.started:
-    st.markdown("# Bienvenue sur Chancy AI 👋")
-    st.write("Je suis Chancy, ton mini‑chatbot. Je peux répondre à des questions simples et raconter des blagues.")
+    st.markdown("# Chancy AI 👋")
+    st.write("Je suis Chancy, ton mini‑chatbot. Je peux vous aider en quoi.")
     st.write(f"Créateur : {NOM_CREATEUR} — {AGE_CREATEUR} ans — {PROVINCE_CREATEUR}, {PAYS_CREATEUR}")
     st.write("---")
     st.write("Essayez : \n- Qui t'a créé ?\n- Raconte une blague\n- D'où vient ton créateur ?")
