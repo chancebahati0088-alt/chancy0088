@@ -47,7 +47,7 @@ if st.sidebar.button("Réinitialiser l'historique"):
 # ---------------------------
 if not st.session_state.started:
     st.markdown("# Chancy AI 👋")
-    st.write("Je suis Chancy, ton mini‑chatbot. Je peux vous aider en quoi.")
+    st.write("Je suis Chancy, votre mini‑chatbot. Je peux vous aider en quoi.")
     st.write(f"Créateur : {NOM_CREATEUR} — {AGE_CREATEUR} ans — {PROVINCE_CREATEUR}, {PAYS_CREATEUR}")
     st.write("---")
     st.write("Essayez : \n- Qui t'a créé ?\n- Raconte une blague\n- D'où vient ton créateur ?")
@@ -56,7 +56,7 @@ if not st.session_state.started:
     with col1:
         if st.button("Démarrer le chat"):
             st.session_state.started = True
-            st.experimental_rerun()
+            st.rerun()
     with col2:
         st.write("")
         if st.button("Voir le code sur GitHub"):
