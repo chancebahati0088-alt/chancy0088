@@ -40,7 +40,7 @@ if st.sidebar.button("Accueil"):
     st.rerun()
 if st.sidebar.button("Réinitialiser l'historique"):
     st.session_state.messages = []
-    st.experimental_rerun()
+    st.rerun()
 
 # ---------------------------
 # ECRAN D'ACCUEIL
@@ -104,7 +104,5 @@ if question:
         reponse = "Chancy : Je suis encore en développement — je ne comprends pas parfaitement, mais j'apprends !"
 
     st.session_state.messages.append(reponse)
-    st.session_state.input = ""
-    st.experimental_rerun()
-
+    st.rerun()
 st.caption("Chancy AI | Projet de Chance Bahati")
