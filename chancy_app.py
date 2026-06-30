@@ -85,12 +85,13 @@ try:
     # Champ de saisie
     question = st.text_input("Écris ton message", value=st.session_state.input, key="input")
     envoyer = st.button("Envoyer")
+    if envoyer and question:
 
     # Logique de réponse: envoi déclenché par le bouton "Envoyer"
         if envoyer and st.session_state.input:
-        question = st.session_state.input
-         q = question.lower().strip()
-         st.session_state.messages.append("Toi : " + question)
+                                              question = st.session_state.input
+                                               q = question.lower().strip()
+                                               st.session_state.messages.append("Toi : " + question)
 
         if any(word in q for word in forbidden_words):
             reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande."
