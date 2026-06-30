@@ -86,7 +86,7 @@ try:
     question = st.text_input("Écris ton message", key="input")
     envoyer = st.button("Envoyer")
     if envoyer and question:
-
+                            q = question.lower().strip()
     # Logique de réponse
     if question:
                 q = question.lower().strip()
