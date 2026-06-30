@@ -108,7 +108,7 @@ try:
             reponse = "Chancy : Je suis encore en développement — je ne comprends pas parfaitement, mais j'apprends !"
 
         st.session_state.messages.append(reponse)
-        st.rerun()
+        st.stop()
         st.caption("Chancy AI | Projet de Chance Bahati")
 
 except Exception as e:
