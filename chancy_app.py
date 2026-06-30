@@ -84,6 +84,8 @@ try:
 
     # Champ de saisie
     question = st.text_input("Écris ton message", key="input")
+    envoyer = st.button("Envoyer")
+    if envoyer and question:
 
     # Logique de réponse
     if question:
