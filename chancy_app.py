@@ -83,12 +83,13 @@ try:
             st.markdown(f"_{msg}_")
 
     # Champ de saisie
-    question = st.text_input("Écris ton message", key="input")
+    question = st.text_input("Écris ton message", value=st.session_state.input, key="input")
     envoyer = st.button("Envoyer")
-                        
-    # Logique de réponse
-    if question:
-                q = question.lower().strip()
+
+    # Logique de réponse: envoi déclenché par le bouton "Envoyer"
+    if envoyer and st.session_state.input:
+        question = st.session_state.input
+        q = question.lower().strip()
         st.session_state.messages.append("Toi : " + question)
 
         if any(word in q for word in forbidden_words):
@@ -109,8 +110,10 @@ try:
             reponse = "Chancy : Je suis encore en développement — je ne comprends pas parfaitement, mais j'apprends !"
 
         st.session_state.messages.append(reponse)
-        st.stop()
-        st.caption("Chancy AI | Projet de Chance Bahati")
+        st.session_state.input = ""
+        st.rerun()
+
+    st.caption("Chancy AI | Projet de Chance Bahati")
 
 except Exception as e:
     # Friendly message shown to users
