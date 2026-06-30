@@ -89,7 +89,7 @@ try:
 
     # Logique de réponse
     if question:
-        q = question.lower().strip()
+                q = question.lower().strip()
         st.session_state.messages.append("Toi : " + question)
 
         if any(word in q for word in forbidden_words):
