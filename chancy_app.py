@@ -83,36 +83,42 @@ try:
             st.markdown(f"_{msg}_")
 
     # Champ de saisie
+    # On utilise st.session_state['input'] pour conserver l'entrée entre re-runs
     question = st.text_input("Écris ton message", value=st.session_state.input, key="input")
-    envoyer = st.button("Envoyer")
-    if envoyer and question:
+    if st.button("Envoyer"):
+        # Récupère le texte actuellement dans session_state['input']
+        q_raw = st.session_state.input or ""
+        q = q_raw.strip()
+        if q:
+            # Sauvegarde le message utilisateur
+            st.session_state.messages.append("Toi : " + q)
+            q_lower = q.lower()
 
-    # Logique de réponse: envoi déclenché par le bouton "Envoyer"
-        if envoyer and st.session_state.input:
-             question = st.session_state.input
-             q = question.lower().strip()
-             st.session_state.messages.append("Toi : " + question)
+            # Détection des mots interdits
+            if any(word in q_lower for word in forbidden_words):
+                reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande."
+            elif "créateur" in q_lower or "qui t'a créé" in q_lower or "qui t'a programmé" in q_lower:
+                reponse = f"Chancy : Mon créateur est {NOM_CREATEUR}"
+            elif "age" in q_lower or "âge" in q_lower:
+                reponse = f"Chancy : Mon créateur a {AGE_CREATEUR} ans"
+            elif "pays" in q_lower or "origine" in q_lower or "d'où vient" in q_lower or "d'ou vient" in q_lower:
+                reponse = f"Chancy : Mon créateur vient de {PAYS_CREATEUR}"
+            elif "province" in q_lower or "sud-kivu" in q_lower or "sud kivu" in q_lower:
+                reponse = f"Chancy : Mon créateur vient de la province {PROVINCE_CREATEUR}"
+            elif any(g in q_lower for g in ["bonjour", "salut", "coucou", "hey", "ça va", "ca va"]):
+                reponse = "Chancy : Bonjour ! Comment puis‑je t'aider ?"
+            elif "blague" in q_lower or "raconte" in q_lower:
+                reponse = "Chancy : " + random.choice(blagues)
+            else:
+                reponse = "Chancy : Je suis encore en développement — je ne comprends pas parfaitement, mais j'apprends !"
 
-        if any(word in q for word in forbidden_words):
-            reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande."
-        elif "créateur" in q or "qui t'a créé" in q or "qui t'a programmé" in q:
-            reponse = f"Chancy : Mon créateur est {NOM_CREATEUR}"
-        elif "age" in q or "âge" in q:
-            reponse = f"Chancy : Mon créateur a {AGE_CREATEUR} ans"
-        elif "pays" in q or "origine" in q or "d'où vient" in q or "d'ou vient" in q:
-            reponse = f"Chancy : Mon créateur vient de {PAYS_CREATEUR}"
-        elif "province" in q or "sud-kivu" in q or "sud kivu" in q:
-            reponse = f"Chancy : Mon créateur vient de la province {PROVINCE_CREATEUR}"
-        elif any(g in q for g in ["bonjour", "salut", "coucou", "hey", "ça va", "ca va"]):
-            reponse = "Chancy : Bonjour ! Comment puis‑je t'aider ?"
-        elif "blague" in q or "raconte" in q:
-            reponse = "Chancy : " + random.choice(blagues)
+            # Ajout de la réponse et réinitialisation du champ
+            st.session_state.messages.append(reponse)
+            st.session_state.input = ""
+            st.rerun()
         else:
-            reponse = "Chancy : Je suis encore en développement — je ne comprends pas parfaitement, mais j'apprends !"
-
-        st.session_state.messages.append(reponse)
-        st.session_state.input = ""
-        st.rerun()
+            # Si l'utilisateur a appuyé sur Envoyer sans texte
+            st.warning("Veuillez écrire un message avant d'envoyer.")
 
     st.caption("Chancy AI | Projet de Chance Bahati")
 
