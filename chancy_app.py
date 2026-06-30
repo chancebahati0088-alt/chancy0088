@@ -89,9 +89,9 @@ try:
 
     # Logique de réponse: envoi déclenché par le bouton "Envoyer"
         if envoyer and st.session_state.input:
-                                              question = st.session_state.input
-                                               q = question.lower().strip()
-                                               st.session_state.messages.append("Toi : " + question)
+             question = st.session_state.input
+             q = question.lower().strip()
+             st.session_state.messages.append("Toi : " + question)
 
         if any(word in q for word in forbidden_words):
             reponse = "Chancy : Désolée, je ne peux pas vous aider avec cette demande."
