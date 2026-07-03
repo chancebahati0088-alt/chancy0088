@@ -57,6 +57,15 @@ else:
         st.success("Bonjour 👋")
         st.write(
             """
+    if st.button("Envoyer"):
+
+    if question == "":
+        st.warning("Écris un message.")
+
+    elif question.lower() == "python":
+        st.success("Bonjour 👋")
+        st.write(
+            """
 🐍 Python est un langage de programmation très populaire.
 
 Il est facile à apprendre et permet de créer :
