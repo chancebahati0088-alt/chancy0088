@@ -1,66 +1,43 @@
 import streamlit as st
 
+# -----------------------------
 # Configuration de la page
+# -----------------------------
 st.set_page_config(
     page_title="Chancy AI",
     page_icon="🤖",
-    layout="centered"
+    layout="wide"
 )
 
-# Mémoire de l'application
-if "started" not in st.session_state:
-    st.session_state.started = False
+# -----------------------------
+# Style de la page
+# -----------------------------
+st.markdown("""
+<style>
 
-# Écran d'accueil
-if not st.session_state.started:
+.stApp{
+    background: linear-gradient(180deg,#12002b,#2a0055,#4b0082);
+    color:white;
+}
 
-    st.title("🤖 Chancy AI")
-    st.subheader("Votre professeure personnelle de programmation")
+h1,h2,h3,p{
+    color:white;
+}
 
-    st.write("""
-Bienvenue !
+div.stButton > button{
+    background:#8A2BE2;
+    color:white;
+    border-radius:15px;
+    height:55px;
+    width:250px;
+    font-size:22px;
+    font-weight:bold;
+    border:none;
+}
 
-Je suis **Chancy AI**, une assistante intelligente créée par **Murhula Bahati Chance**.
+div.stButton > button:hover{
+    background:#9d4edd;
+}
 
-Je vais vous apprendre :
-
-- 🐍 Python
-- 🌐 HTML
-- 🎨 CSS
-- ⚡ JavaScript
-- ☕ Java
-""")
-
-    if st.button("🚀 Commencer"):
-        st.session_state.started = True
-        st.rerun()
-
-# Écran de discussion
-else:
-
-    st.title("💬 Discussion avec Chancy")
-
-    question = st.text_input("Écris ton message")
-
-    if st.button("Envoyer"):
-
-        if question == "":
-            st.warning("Écris un message.")
-
-        elif question.lower() == "python":
-            st.success("Bonjour 👋")
-            st.write("""
-🐍 Python est un langage de programmation très populaire.
-
-Il est facile à apprendre et permet de créer :
-- des applications
-- des sites web
-- des jeux
-- de l'intelligence artificielle
-- de l'automatisation
-
-Veux-tu commencer le cours de Python ?
-""")
-
-        else:
-            st.info("Je suis encore en apprentissage. 😊")
+</style>
+""", unsafe_allow_html=True)
