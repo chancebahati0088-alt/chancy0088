@@ -22,4 +22,4 @@ def show_home():
         st.info("🐍 Python")
         st.info("🌐 HTML")
         st.info("🎨 CSS")
-        st.info("⚡
+        st.info("⚡ JavaScript")
