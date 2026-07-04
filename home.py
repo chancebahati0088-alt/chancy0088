@@ -23,3 +23,21 @@ def show_home():
         st.info("🌐 HTML")
         st.info("🎨 CSS")
         st.info("⚡ JavaScript")
+
+    with col2:
+        st.info("☕ Java")
+        st.info("⚙️ C")
+        st.info("🖥️ C++")
+        st.info("💎 C#")
+
+    with col3:
+        st.info("🐘 PHP")
+        st.info("🗄️ SQL")
+        st.info("📱 Flutter")
+        st.info("🎯 Dart")
+
+    st.write("")
+
+    if st.button("🚀 COMMENCER"):
+        st.session_state.page = "chat"
+        st.rerun()
