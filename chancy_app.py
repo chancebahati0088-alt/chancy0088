@@ -40,10 +40,4 @@ st.markdown(
     '<div class="subtitle">Bienvenue sur Chancy AI<br>Votre assistante personnelle en programmation</div>',
     unsafe_allow_html=True
 )
-.robot{
-    text-align:center;
-    font-size:100px;
-    margin-top:20px;
-    color:#A855F7;
-    text-shadow:0 0 20px #A855F7;
-}
+st.markdown('<div class="robot">🤖</div>', unsafe_allow_html=True)
