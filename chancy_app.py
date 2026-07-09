@@ -40,4 +40,4 @@ st.markdown(
     '<div class="subtitle">Bienvenue sur Chancy AI<br>Votre assistante personnelle en programmation</div>',
     unsafe_allow_html=True
 )
-st.image("assets/robot.png", width=220)
+
