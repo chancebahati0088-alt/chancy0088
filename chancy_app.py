@@ -6,74 +6,37 @@ st.set_page_config(
     layout="wide"
 )
 
-if "page" not in st.session_state:
-    st.session_state.page = "home"
-
 st.markdown("""
 <style>
-
-.stApp{
-    background:#0B0F19;
+.stApp {
+    background: #0B0F19;
+    color: white;
 }
 
-.main{
-    background:#0B0F19;
+.title {
+    text-align: center;
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
 }
 
-.block-container{
-    padding-top:2rem;
-    max-width:900px;
+.subtitle {
+    text-align: center;
+    color: #c084fc;
+    font-size: 24px;
 }
 
-.robot{
-    width:180px;
-    height:180px;
-    margin:auto;
-    border-radius:50%;
-    background:linear-gradient(135deg,#6C2BD9,#A855F7);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:90px;
-    box-shadow:0 0 40px rgba(168,85,247,.6);
+.robot {
+    text-align: center;
+    font-size: 100px;
+    margin-top: 20px;
 }
+</style>
+""", unsafe_allow_html=True)
 
-.title{
-    text-align:center;
-    color:white;
-    font-size:55px;
-    font-weight:bold;
-    margin-top:20px;
-}
-
-.subtitle{
-    text-align:center;
-    color:#C084FC;
-    font-size:28px;
-}
-
-.desc{
-    text-align:center;
-    color:#D1D5DB;
-    font-size:18px;
-    margin-bottom:30px;
-}
-
-.card{
-    background:rgba(124,58,237,.18);
-    border:1px solid rgba(168,85,247,.45);
-    border-radius:18px;
-    padding:15px;
-    margin-bottom:12px;
-    color:white;
-    font-size:18px;
-    transition:.3s;
-}
-
-.card:hover{
-    background:rgba(124,58,237,.35);
-}
-
-div.stButton > button{
-    width:100%;
-    height:60
+st.markdown('<div class="robot">🤖</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">CHANCY AI</div>', unsafe_allow_html=True)
+st.markdown(
+    '<div class="subtitle">Bienvenue sur Chancy AI<br>Votre assistante personnelle en programmation</div>',
+    unsafe_allow_html=True
+)
